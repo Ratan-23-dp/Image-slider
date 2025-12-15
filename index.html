@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider</title>
+
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background-color: #9cccd5;
+    }
+
+    img {
+      width: 650px;
+      height: 500px;
+      border-radius: 10px;
+      transition: 0.5s;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Image Slider</h2>
+
+  <img id="slide" src="https://i.ibb.co/kVvtqDqq/ghost.jpg" alt="slider image">
+
+  <br>
+
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+
+  <script>
+
+    let slide = document.getElementById("slide");
+    let nextBtn = document.getElementById("nextBtn");
+    let prevBtn = document.getElementById("prevBtn");
+
+    let images = [
+      "https://i.ibb.co/kVvtqDqq/ghost.jpg",
+      "https://i.ibb.co/XNJJJwX/god.jpg",
+      "https://i.ibb.co/v6fpX96K/leon.jpg",
+      "https://i.ibb.co/rRFYFgbB/nathan.jpg"
+    ];
+
+    let index = 0;
+
+    nextBtn.addEventListener("click", function () {
+      index++;
+      if (index == images.length) {
+        index = 0;
+      }
+      slide.src = images[index];
+    });
+
+    prevBtn.addEventListener("click", function () {
+      index--;
+      if (index < 0) {
+        index = images.length - 1;
+      }
+      slide.src = images[index];
+    });
+
+    setInterval(function () {
+      index++;
+      if (index == images.length) {
+        index = 0;
+      }
+      slide.src = images[index];
+    }, 3000);
+  </script>
+
+</body>
+</html>
